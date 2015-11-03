@@ -30,8 +30,6 @@ public class GildedRose
 		
 	}
 
-
-
 	private static void updateSellIn(Item item) {
 		item.setSellIn(item.getSellIn()-1);
 	}
@@ -40,8 +38,15 @@ public class GildedRose
 		if(item.getSellIn() < 0)
 			item.setQuality(item.getQuality()-2);		
 		else
-			item.setQuality(item.getQuality()-1);		
+			item.setQuality(item.getQuality()-1);
+		checkPositiveQuality(item);
 	}
+
+	private static void checkPositiveQuality(Item item) {
+		if(item.getQuality() < 0)
+			item.setQuality(0);		
+	}
+	
 	
 
 }
