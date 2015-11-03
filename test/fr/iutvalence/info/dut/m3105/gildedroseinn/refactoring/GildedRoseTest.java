@@ -11,16 +11,14 @@ public class GildedRoseTest
 	@Test
 	public void decrementSellInTestForAnItems()
 	{
-		ArrayList<Item> itemList;
 		
-		itemList = new ArrayList<Item>(); 
-		itemList.add(new Item("testOne", 50, 100));
+		Item item = new Item("testOne", 50, 100);
 		
-		int valSellInDayOne = itemList.get(0).getSellIn();
+		int valSellInDayOne = item.getSellIn();
 		
-		GildedRose.updateItems(itemList);
+		GildedRose.updateItem(item);
 		
-		assertEquals(valSellInDayOne-1, itemList.get(0).getSellIn());
+		assertEquals(valSellInDayOne-1, item.getSellIn());
 	}
 
 }
