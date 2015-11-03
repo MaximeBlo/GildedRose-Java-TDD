@@ -13,6 +13,8 @@ public class GildedRoseTest
 	public static final Item ITEM_TWO = new Item("testTwo", 70, 80);
 	public static final Item ITEM_THREE = new Item("testThree", 1, 8);
 	public static final Item ITEM_QUALITY_NULL = new Item("testThree", 3, 0);
+	public static final Item BRIE = new Item("Aged Brie", 2, 0);
+	
 	
 	@Test
 	public void decrementSellInTestForAnItem()
@@ -53,6 +55,19 @@ public class GildedRoseTest
 			GildedRose.updateItem(ITEM_QUALITY_NULL);
 			valQualityNextDay = ITEM_QUALITY_NULL.getQuality();
 			assertEquals(valQualityCurrentDay, valQualityNextDay);
+		}
+	}
+	
+	@Test
+	public void testIfQualityForBrieExeption(){
+		int valQualityCurrentDay;
+		int valQualityNextDay;
+		int nbDay;
+		for(nbDay=0; nbDay < 5; nbDay++){
+			valQualityCurrentDay = BRIE.getQuality();
+			GildedRose.updateItem(BRIE);
+			valQualityNextDay = BRIE.getQuality();
+			assertEquals(valQualityCurrentDay+1, valQualityNextDay);
 		}
 	}
 	

@@ -30,9 +30,11 @@ public class GildedRose
 		
 	}
 
+	
 	private static void updateSellIn(Item item) {
 		item.setSellIn(item.getSellIn()-1);
 	}
+	
 	
 	private static void updateQuality(Item item) {
 		if(item.getSellIn() < 0)
@@ -42,6 +44,7 @@ public class GildedRose
 		checkPositiveQuality(item);
 	}
 
+	
 	private static void checkPositiveQuality(Item item) {
 		if(item.getQuality() < 0)
 			item.setQuality(0);		
