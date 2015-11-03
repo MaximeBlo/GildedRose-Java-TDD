@@ -25,22 +25,34 @@ public class GildedRose
 
 	public static void updateItem(Item item)
 	{	
-		updateSellIn(item);
-		updateQuality(item);
-		
+		checkItem(item);
 	}
 
 	
-	private static void updateSellIn(Item item) {
+	private static void checkItem(Item item) {
+		switch(item.getName()){
+		
+		case "Aged Brie":
+			//TODO INCREASE QUALITY!!!
+			break;
+		default:
+			decreaseSellIn(item);
+			decreaseQuality(item);
+			break;
+		}
+	}
+
+	private static void decreaseSellIn(Item item) {
 		item.setSellIn(item.getSellIn()-1);
 	}
 	
 	
-	private static void updateQuality(Item item) {
+	private static void decreaseQuality(Item item) {
+		int itemQuality = item.getQuality();
 		if(item.getSellIn() < 0)
-			item.setQuality(item.getQuality()-2);		
+			item.setQuality(itemQuality -2);		
 		else
-			item.setQuality(item.getQuality()-1);
+			item.setQuality(itemQuality-1);
 		checkPositiveQuality(item);
 	}
 
