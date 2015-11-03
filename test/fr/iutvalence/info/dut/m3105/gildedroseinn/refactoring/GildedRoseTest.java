@@ -12,6 +12,7 @@ public class GildedRoseTest
 	public static final Item ITEM = new Item("testOne", 50, 100);
 	public static final Item ITEM_TWO = new Item("testTwo", 70, 80);
 	public static final Item ITEM_THREE = new Item("testThree", 1, 8);
+	public static final Item ITEM_QUALITY_NULL = new Item("testThree", 3, 0);
 	
 	@Test
 	public void decrementSellInTestForAnItem()
@@ -27,25 +28,40 @@ public class GildedRoseTest
 	@Test
 	public void decrementQualityForAnItem(){
 		
-		int valQualityDayOne = ITEM_TWO.getQuality();
-		
-		GildedRose.updateItem(ITEM_TWO);
-		assertEquals(valQualityDayOne -1, ITEM_TWO.getQuality());
+		getItemAndTestQuality(ITEM_TWO);
 	}
+
 	
 	@Test
 	public void decrementQualityForAnItemWhoHasASellInWhoBecameNegative(){
-		int valQualityDayOne = ITEM_THREE.getQuality();
 		int valQualityDayTwo;
 		
+		getItemAndTestQuality(ITEM_THREE);
 		GildedRose.updateItem(ITEM_THREE);
 		valQualityDayTwo = ITEM_THREE.getQuality();
-		
-		assertEquals(valQualityDayOne -1, ITEM_THREE.getQuality());
-		
 		GildedRose.updateItem(ITEM_THREE);
 		assertEquals(valQualityDayTwo -2, ITEM_THREE.getQuality());
 	}
 
-
+	@Test
+	public void testIfQualityNeverBecameNegative(){
+		int valQualityCurrentDay;
+		int valQualityNextDay;
+		int nbDay;
+		for(nbDay=0; nbDay < 5; nbDay++){
+			valQualityCurrentDay = ITEM_QUALITY_NULL.getQuality();
+			GildedRose.updateItem(ITEM_QUALITY_NULL);
+			valQualityNextDay = ITEM_QUALITY_NULL.getQuality();
+			assertEquals(valQualityCurrentDay, valQualityNextDay);
+		}
+	}
+	
+	
+	
+	private void getItemAndTestQuality(Item item) {
+		int valQualityDay = item.getQuality();
+		
+		GildedRose.updateItem(item);
+		assertEquals(valQualityDay-1, item.getQuality());
+	}
 }
