@@ -26,6 +26,7 @@ public class GildedRose
 	public static void updateItem(Item item)
 	{	
 		updateSellIn(item);
+		updateQuality(item);
 		
 	}
 
@@ -34,5 +35,10 @@ public class GildedRose
 	private static void updateSellIn(Item item) {
 		item.setSellIn(item.getSellIn()-1);
 	}
+	
+	private static void updateQuality(Item item) {
+		item.setQuality(item.getQuality()-1);		
+	}
+	
 
 }

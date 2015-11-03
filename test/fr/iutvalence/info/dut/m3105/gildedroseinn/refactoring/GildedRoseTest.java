@@ -10,6 +10,7 @@ public class GildedRoseTest
 {
 	
 	public static final Item ITEM = new Item("testOne", 50, 100);
+	public static final Item ITEM_TWO = new Item("testTwo", 70, 80);
 	
 	@Test
 	public void decrementSellInTestForAnItem()
@@ -25,10 +26,10 @@ public class GildedRoseTest
 	@Test
 	public void decrementQualityForAnItem(){
 		
-		int valQualityDayOne = ITEM.getQuality();
+		int valQualityDayOne = ITEM_TWO.getQuality();
 		
-		GildedRose.updateItem(ITEM);
-		assertEquals(valQualityDayOne -1, ITEM.getQuality());
+		GildedRose.updateItem(ITEM_TWO);
+		assertEquals(valQualityDayOne -1, ITEM_TWO.getQuality());
 	}
 
 }
