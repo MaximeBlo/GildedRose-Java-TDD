@@ -8,17 +8,27 @@ import org.junit.Test;
 
 public class GildedRoseTest
 {
+	
+	public static final Item ITEM = new Item("testOne", 50, 100);
+	
 	@Test
-	public void decrementSellInTestForAnItems()
+	public void decrementSellInTestForAnItem()
 	{
+
+		int valSellInDayOne = ITEM.getSellIn();
 		
-		Item item = new Item("testOne", 50, 100);
+		GildedRose.updateItem(ITEM);
 		
-		int valSellInDayOne = item.getSellIn();
+		assertEquals(valSellInDayOne-1, ITEM.getSellIn());
+	}
+	
+	@Test
+	public void decrementQualityForAnItem(){
 		
-		GildedRose.updateItem(item);
+		int valQualityDayOne = ITEM.getQuality();
 		
-		assertEquals(valSellInDayOne-1, item.getSellIn());
+		GildedRose.updateItem(ITEM);
+		assertEquals(valQualityDayOne -1, ITEM.getQuality());
 	}
 
 }
